@@ -7,25 +7,21 @@ ActiveRecord::Base.establish_connection(
 )
 
 class User < ActiveRecord::Base
-
+  has_many :orders
+  has_many :addresses
 end
 
 class Address < ActiveRecord::Base
-
+  belongs_to :user
 end
-
 
 class Item < ActiveRecord::Base
-
+  has_many :orders
 end
-
 
 class Order < ActiveRecord::Base
-
+  belongs_to :user
+  belongs_to :item
 end
 
-
-
-
-
-SELECT COUNT(*) FROM users
+puts User.count
